@@ -3,15 +3,15 @@ https://sepolia.etherscan.io/
 
 To run deploy.js : npx hardhat run deploy.js --network hardhat
 
-FortyTwo42 Token
+# FortyTwo42 Token
 
-Description
+## Description
 
 FortyTwo42 (FT42) est un token ERC-20 développé sur la blockchain Ethereum. 
 Ce projet a pour but de créer un token respectant les contraintes de nommage imposées (incluant "42") 
 et de fournir un exemple fonctionnel d'un contrat intelligent déployé sur un réseau de test.
 
-Choix Techniques
+## Choix Techniques
 
 Blockchain : Ethereum (Testnet Sepolia)
 
@@ -27,20 +27,9 @@ Explorateur de blockchain : Etherscan Sepolia
 
 Service d'accès à Ethereum : Alchemy
 
-Structure du projet
+## Installation et Déploiement
 
-├── README.md
-├── code
-│   ├── FT42.sol
-│   ├── deploy.js
-├── deployment
-│   ├── hardhat.config.js
-│   ├── script.sh
-├── documentation
-
-Installation et Déploiement
-
-Prérequis
+### Prérequis
 
 Node.js et npm installés
 
@@ -48,7 +37,7 @@ Un compte sur Alchemy pour obtenir une clé API
 
 Un portefeuille Ethereum avec des ETH de test sur Sepolia
 
-Étapes
+### Étapes
 
 Cloner le dépôt
 
@@ -65,7 +54,7 @@ Exécuter le script d'installation et de déploiement
 chmod +x script.sh
 ./script.sh
 
-Sécurité
+## Sécurité
 
 La clé privée ne doit jamais être exposée publiquement.
 
