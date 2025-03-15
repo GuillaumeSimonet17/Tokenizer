@@ -11,7 +11,7 @@ async function main() {
     console.log("FortyTwo42 deployed to:", token.address)
 
     let balance = await token.balanceOf(deployer.address);
-    console.log("Solde de l'adresse du propriétaire (deployer):", ethers.utils.formatUnits(balance, 18), "tokens");
+    console.log("Solde de l'adresse du propriétaire (deployer):", ethers.utils.formatUnits(balance, 18), "FT42");
 
 }
 

@@ -7,24 +7,20 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 
 contract FortyTwo42 is ERC20, Ownable {
+
     constructor(uint256 amount) ERC20("FortyTwo42", "FT42") Ownable(msg.sender) {
-		_mint(_msgSender(), amount);
+        _mint(_msgSender(), amount);
     }
 
-    address lastPerson;
-    uint balance;
-
-    receive() external payable {
-        lastPerson = msg.sender;
-        balance = balance + msg.value;
+    // send FT42 to another account
+    // this function already exist on Remix : legacy from OpenZeppelin's ERC20 contract
+    function sendTokens(address receiver, uint256 amount) public {
+        transfer(receiver, amount);
     }
 
-    function getLastPerson() public view returns(address) {
-        return lastPerson;
-    }
-
-    function getBalance() public view returns(uint) {
-        return balance;
+    // to mint tokens after contract's creation (onlyOwner)
+    function mint(address to, uint256 amount) public onlyOwner {
+        _mint(to, amount);
     }
 
 }
