@@ -1,23 +1,26 @@
-
 async function main() {
-
     const [deployer] = await ethers.getSigners();
     console.log("Deploying contracts with the account:", deployer.address);
 
-    const Token = await ethers.getContractFactory("FortyTwo42");
-    const mintAmount = ethers.utils.parseUnits("1000000", 18);
-    const token = await Token.deploy(mintAmount);
+    const FortyTwo42 = await ethers.getContractFactory("FortyTwo42");
+    const supply = 1000000;
+    const decimals = 18;
 
-    console.log("FortyTwo42 deployed to:", token.address)
+    // Utiliser BigNumber pour éviter un dépassement
+    const initialSupply = ethers.BigNumber.from(supply).mul(ethers.BigNumber.from(10).pow(decimals));
 
-    let balance = await token.balanceOf(deployer.address);
-    console.log("Solde de l'adresse du propriétaire (deployer):", ethers.utils.formatUnits(balance, 18), "FT42");
+    console.log("Initial supply:", initialSupply.toString());
 
+    const ft42 = await FortyTwo42.deploy(initialSupply);
+    console.log("FortyTwo42 deployed to:", ft42.address);
+
+    // Déployer le contrat StakingContract avec l'adresse de FortyTwo42
+    const StakingContract = await ethers.getContractFactory("StakingContract");
+    const stakingContract = await StakingContract.deploy(ft42.address);
+    console.log("StakingContract deployed to:", stakingContract.address);
 }
 
-main()
-    .then(() => process.exit(0))
-    .catch((error) => {
-        console.error(error);
-        process.exit(1);
-    });
+main().catch((error) => {
+    console.error(error);
+    process.exitCode = 1;
+});
