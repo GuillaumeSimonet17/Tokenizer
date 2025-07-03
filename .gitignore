@@ -1,6 +1,7 @@
 node_modules
 deployment/.env
 .idea
+.venv
 
 # Hardhat files
 /code/cache
