@@ -28,6 +28,28 @@ sur la blockchain : transactions, smart contracts, adresses, blocs, etc.
 🔹 Smart Contracts → Voir le code source et interagir avec les fonctions\
 🔹 Blocs → Voir la confirmation des transactions par les mineurs
 
+| Terme | Signification |
+| --- | --- |
+| **Gas** | Unité de **mesure de travail** effectué (comme du carburant pour exécuter du code Ethereum) |
+| **Transaction Fee** | Ce que tu **paies en ETH** = `Gas utilisé × Prix du gas (gasPrice)` |
+
+Exemple de ta transaction :
+
+- **Gas utilisé** : 953,915
+- **Gas price** : 1.5 Gwei
+- **Fee payée** : ≈ 0.00143 ETH
+
+Il **n’y a pas de nombre fixe de transactions par bloc**, mais une **limite en "gas total"** par bloc.
+
+### 🔧 Sur Ethereum (et donc Sepolia) :
+
+- **Chaque bloc a une limite de gas** : environ **30 millions** de gas
+- **Chaque transaction consomme du gas**
+- Donc :
+    
+    > Nombre de transactions = Gas total du bloc / Gas moyen par transaction
+    >
+
 `(.venv) ➜  deployment git:(main) ✗ npx hardhat run deploy.js --network sepolia
 `
 `Deploying contracts with the account: 0xXXXXXXXXXXXXXXXXXXXXXXXXXXXXX`
@@ -41,7 +63,8 @@ sur la blockchain : transactions, smart contracts, adresses, blocs, etc.
 
 _Ici un exemple d'un compte :_
 ![img.png](img.png)
-
+![Contract-Address-0x2706a38518b2753101c42fa619bb1b3a700f61ca-Etherscan-07-17-2025_04_36_PM.png](Contract-Address-0x2706a38518b2753101c42fa619bb1b3a700f61ca-Etherscan-07-17-2025_04_36_PM.png)
+![FortyTwo42-FT42-Token-Tracker-Etherscan-07-17-2025_04_37_PM.png](FortyTwo42-FT42-Token-Tracker-Etherscan-07-17-2025_04_37_PM.png)
 #### Cas concret : Déploiement d’un smart contract
 Quand tu déploies un smart contract avec Hardhat et Alchemy, tu obtiens une adresse de contrat. 
 Tu peux copier cette adresse et la rechercher sur Sepolia Etherscan pour voir :\

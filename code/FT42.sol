@@ -1,26 +1,16 @@
 // SPDX-License-Identifier: MIT
-// Compatible with OpenZeppelin Contracts ^5.0.0
 pragma solidity ^0.8.22;
 
+// Librairie OpenZeppelin ERC20 permet d’utiliser toutes les fonctionnalités
+// d’un token ERC-20 standard sans tout recoder (transfer, balanceOf, approve...)
 import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
 
 
-contract FortyTwo42 is ERC20, Ownable {
+contract FortyTwo42 is ERC20 {
 
-    constructor(uint256 amount) ERC20("FortyTwo42", "FT42") Ownable(msg.sender) {
+    constructor(uint256 amount) ERC20("FortyTwo42", "FT42") {
+        // Crée amount de tokens, et les envoie à l’adresse du déployeur du contrat.
+        // Fonction héritée, retourne msg.sender, c’est-à-dire l’adresse de celui qui a appelé la fonction.
         _mint(_msgSender(), amount);
     }
-
-    // send FT42 to another account
-    // this function already exist on Remix : legacy from OpenZeppelin's ERC20 contract
-    function sendTokens(address receiver, uint256 amount) public {
-        transfer(receiver, amount);
-    }
-
-    // to mint tokens after contract's creation (onlyOwner)
-    function mint(address to, uint256 amount) public onlyOwner {
-        _mint(to, amount);
-    }
-
 }

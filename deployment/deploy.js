@@ -12,12 +12,14 @@ async function main() {
     console.log("Initial supply:", initialSupply.toString());
 
     const ft42 = await FortyTwo42.deploy(initialSupply);
+    console.log(ft42)
+    console.log(ft42.address)
+    await ft42.deployed();
+    console.log("==================")
+    console.log(ft42)
+    console.log(ft42.address)
     console.log("FortyTwo42 deployed to:", ft42.address);
 
-    // Déployer le contrat StakingContract avec l'adresse de FortyTwo42
-    const StakingContract = await ethers.getContractFactory("StakingContract");
-    const stakingContract = await StakingContract.deploy(ft42.address);
-    console.log("StakingContract deployed to:", stakingContract.address);
 }
 
 main().catch((error) => {
